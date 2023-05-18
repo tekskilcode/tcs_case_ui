@@ -1,0 +1,154 @@
+/*819x480*/
+
+body{
+	background-color: black;
+	color:rgb(141, 140, 140);
+  font-weight: 200;
+}
+h1{
+  font-weight: 400;
+    font-size: xx-large;
+}
+a{
+  text-decoration: none;
+}
+
+.btn-tmp{
+  font-size: 1.2em;
+  font-weight: 100;
+  background-color: black;
+  color:rgb(141, 140, 140);
+  border: 2px solid rgb(141, 140, 140);
+  border-radius: 10px;
+  padding: 4px;
+  text-align: center;
+}
+.list-button{
+  font-size: 1.5em !important;
+}
+
+.tcs-input{
+  background-color: #000000;
+  color: white;
+  font-size: 2em;
+}
+
+.btn-large{
+  font-size: 1.5em;
+}
+
+.toggle-handle{
+  background-color: white;
+}
+
+.btn-lg{
+  font-size: 2.5rem;
+}
+/* .btn-success{
+  color:green;
+}
+.btn-danger{
+  color: orangered;
+} */
+
+/* Change the color of the QR code to red */
+.qr-area img {
+  filter: invert(1) sepia(100%) saturate(7500%) hue-rotate(180deg);
+  width:100%;
+  
+}
+
+.qr-area{
+  width: 399px;
+  position: absolute;
+  padding: 36px 6px;
+  background-color: black;
+  left: 39px;
+  top: -63px;
+  z-index: 1000;
+}
+
+.info-tag{
+  font-weight:400;
+}
+.info-box{
+  border-radius: 10px;
+  background-color: black;
+  color: rgb(141, 140, 140);
+  border: 2px solid rgb(141, 140, 140);
+  padding: 2px;
+  font-size: 2.5em;
+  font-weight: 100;
+  border-radius: 33px;
+  width:100%;
+}
+.info-box p{
+  line-height: 1rem;
+}
+.info-box .ip_address{
+  line-height: 2.6rem;
+}
+
+.small_text{
+  font-size: 0.5em;
+}
+.right-sep{
+  border-right: 2px solid rgb(141, 140, 140);
+}
+
+.line_top{
+  border-top:2px solid rgb(141, 140, 140); 
+}
+.glow-bg{
+  background: rgb(159,159,144);
+  background: radial-gradient(circle, rgba(159,159,144,1) 2%, rgba(0,0,0,1) 26%);
+}
+
+.each-item{
+  border: 1px solid;
+  border-radius: 10px;
+}
+.boarder-box{
+  border: 2px solid;
+  border-radius: 10px;
+  padding:0px 16px;
+  height: 380px;
+  overflow-y:scroll;
+  overflow-x: hidden;
+}
+
+/* Target the scrollbar */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Style the thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border-radius: 10px;
+}
+
+.center-text{
+  height:54px;
+  display: flex;
+  align-items: center;
+}
+
+.center-text h5{
+  margin-bottom: 0;
+}
+
+.flecks-center{
+  display: flex;
+  align-items: center;
+}
+
+.sm-text{
+  font-size: 1.5em;
+}
+
+#num-pad-title{
+  text-align: center;
+  font-weight:500;
+  color: #000000;
+}

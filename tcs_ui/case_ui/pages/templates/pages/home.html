@@ -1,0 +1,295 @@
+{% load qr_code %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Home</title>
+
+	<style>
+
+		/* Define a new font family called Roboto */
+		@font-face {
+			font-family: 'Roboto';
+			src: url('{% static "fonts/Roboto/Roboto-Light.ttf" %}') format('truetype');
+		}
+
+		/* Apply the Roboto font family to the body text */
+		.container-fluid{
+			font-family: 'Roboto' !important;
+			font-weight: 400;
+		
+		}
+
+
+
+	</style>
+
+
+
+	<!-- Link to the Bootstrap CSS file -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<!-- CUSTOM CSS-->
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+		
+	<!-- Link to jQuery (required for Bootstrap JS) -->
+	<script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
+	<!-- Link to the Bootstrap JS file -->
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+	
+
+	<script src="{% static 'js/vue.global.js' %}"></script>
+	<script src="{% static 'js/axios.min.js' %}"></script>
+
+	
+
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+</head>
+
+<body>
+
+<div id="main_content" class="container-fluid">
+	
+	<div class="qr-area" v-show="showQRArea">
+		{%qr_from_text theNum image_format="png" size='L'%}
+		<input type="text" class="text-center info-box" value="Close QR Code" @click="togleQRAreas" readonly>
+	</div>
+
+	<div class="row mt-4">
+		
+		<div class="col-md-7 right-sep">
+			<h1 class="text-center">Tekskil Control Hub</h1>
+		
+			<div class="row justify-content-center glow-bg">
+				<div class="col d-flex align-items-center">
+					<img class="mx-auto mt-2" width="144"src="{% static 'img/LOGO_SPINNER.gif'%} ">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="row">
+						<div class="col-md-10 offset-md-1 mt-2 mb-4 line_top">
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-10 offset-md-1 mb-2">
+							<h4 class="mb-0 info-tag">Server Address</h4>
+							<div type="text" class="text-center info-box" @click="togleQRAreas">
+								<p class="mb-0 ip_address">{{theNum}}</p>
+								<p class="text-center small_text mb-0">(tap for QR code)</p>
+							</div>
+							
+						</div>
+					</div>
+					<div class="row">
+						<!-- <div class="col-md-5 offset-md-1">
+							<h4 class="mb-0 info-tag">DHCP Status</h4>
+							<input type="checkbox" checked="false" data-toggle="toggle" data-size="large" 
+							 data-on="Enabled" data-off="Disabled"
+							data-onstyle="success" data-offstyle="danger">
+						</div> -->
+						
+						<div class="col-md-10 offset-md-1">
+							<div class="text-center info-box mt-4" id="goCustIP" @click="goToCustIP">
+								Custom IP
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="col-md-5">
+			<div class="row mt-3">
+				<div class="col-md-5 offset-md-1">
+					<h4 class="mb-0 info-tag">Network:</h4>
+					{% if hasNetwork %}
+						<p class="btn-tmp">Connected</p>
+					{% else %}
+						<p class="btn-tmp">Offline</p>
+					{% endif %}
+				</div>
+
+				<div class="col-md-5 ">
+					<h4 class="mb-0 info-tag">Cloud:</h4>
+					{% if hasInternet %}
+						<p class="btn-tmp">Connected</p>
+					{% else %}
+						<p class="btn-tmp">Offline</p>
+					{% endif %}
+				</div>
+			</div>
+			
+			<div class="row mt-1">
+				<div class="col-md-10 offset-md-1">
+					<div class="text-center info-box" id="goReload" @click="reloadPage">
+						Refresh
+					</div>
+				</div>
+			</div>
+			<div class="row mt-3">
+				<div class="col-md-10 offset-md-1">
+					<div type="text" class="text-center info-box" id="goConnect" @click="goToConnect">
+						Find Devices	
+					</div>
+				</div>
+			</div>
+			<div class="row mt-3">
+				<div class="col-md-10 offset-md-1">
+					<div type="text" class="text-center info-box" data-bs-toggle="modal" data-bs-target="#reboot_modal">
+						Reboot
+					</div>
+				</div>
+			</div>
+			<div class="row mt-3">
+				<div class="col-md-10 offset-md-1">
+					<div type="text" class="text-center info-box" data-bs-toggle="modal" data-bs-target="#shutdown_modal">
+						Shutdown
+					</div>
+				</div>
+			</div>
+			
+			
+
+		</div>
+	</div>
+
+	  <!-- Shutdown Modal -->
+	  <div class="modal fade" id="shutdown_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalLabel">Please confirm shutdown</h5>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+			  <button type="button" class="btn btn-success" @click="shutdownHostMachine">Confirm</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	
+	  <!-- Reboot Modal -->
+	  <div class="modal fade" id="reboot_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalLabel">Please confirm reboot</h5>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+			  <button type="button" class="btn btn-success" @click="rebootHostMachine" >Confirm</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+</div>
+
+
+  
+	
+
+
+</body>
+
+<script>
+	const { createApp } = Vue
+
+	createApp({
+		data() {
+			return {
+				showQRArea:false,
+				lastActivity: Date.now()
+			}
+		},
+		beforeMount(){
+			$('body').hide();
+			$('body').fadeIn(1000);
+		},
+		mounted(){
+			setInterval(() => {
+				if (Date.now() - this.lastActivity > 60000) {
+        			this.redirectToSleepPage();
+      			}
+    		}, 1000);
+		},
+		methods:{
+			togleQRAreas(){
+				this.showQRArea = !this.showQRArea;
+				this.refreshActivity();
+			},
+			reloadPage(){
+				$('#goReload').css('background-color', 'rgb(141, 140, 140)');
+				$('body').fadeOut(500,function() {
+					location.reload();
+				});
+			},
+			goToConnect(){
+				$('#goConnect').css('background-color', 'rgb(141, 140, 140)');
+				$('body').fadeOut(500,function() {
+					window.location.href = '/connect';	
+				});
+				
+			},
+			goToCustIP(){
+				$('#goCustIP').css('background-color', 'rgb(141, 140, 140)');
+				$('body').fadeOut(500,function() {
+					window.location.href = '/custom_ip';	
+				});
+				
+			},
+	
+			async rebootHostMachine(){
+				console.log('reboot request sent');
+				response = await axios.get('/power/', {
+					params: {
+                    	type: "reboot",
+					}
+                });
+				console.log(response.data.message);
+			},
+			async shutdownHostMachine(){
+				console.log('shutdown request sent');
+				response = await axios.get('/power/', {
+					params: {
+                    	type: "shutdown",
+					}
+                });
+				console.log(response.data.message);
+			},
+
+			async testIP(ip,retrunPosition){
+                console.log(ip);
+                response = await axios.get('/check/', {
+					params: {
+                    	ip_address: ip,
+					}
+                });
+                $('#'+retrunPosition).text(response.data.message+" ms");
+               
+                console.log(response.data.message);
+            },
+			refreshActivity() {
+				this.lastActivity = Date.now();
+			},
+			redirectToSleepPage() {
+				$('body').fadeOut(500,function() {
+					window.location.href = '/sleep';	
+				});
+				
+			}
+		}
+	}).mount('#main_content')
+</script>
+
+
+</html>
