@@ -24,7 +24,6 @@ def check(request):
 
 def cust_ip(request):
 	if request.method == 'GET':
-		testvar = ""
 		pipe_path = './compipe/compipe'
 		pipe_fd = os.open(pipe_path, os.O_WRONLY)
 		print('pipe connected')
