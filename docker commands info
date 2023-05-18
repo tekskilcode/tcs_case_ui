@@ -1,0 +1,57 @@
+docker load -i <tar-file>
+
+docker run -it --network host --mount type=volume,source=shared_data,target=/app/data  disco-scanner
+
+docker ps
+
+docker run -it --network host --mount type=volume,source=shared_data,target=/app/data  disco-scanner
+
+docker build -t disco-scanner .
+
+
+
+Startup services are in ect/systemd/system/
+	-tekskil_hub_ui.service	
+	-tcs_announcer.service	
+	
+chromium is started by Gnome
+	-to edit the startup call terminal:  "gnome-session-properties"
+	
+	
+
+to set a new IP ADDRESS 
+	sudo ifconfig enp3S0 down
+	sudo ifconfig enp3S0 192.168.x.y
+	sudo ifconfig enp3S0 up
+	
+to reject current IP 
+	dhclient -r
+	
+to aquire a new DHCP IP
+	dhclient
+	
+to  get the host (router) ip
+	ip route | grep default
+	
+get the connection name 
+	nmcli connection show
+
+change the ip to manual (important to set the dns to the router ip)
+	sudo nmcli connection modify "Wired connection 1" ipv4.addresses 192.168.1.146/24 ipv4.gateway 192.168.1.1 ipv4.method manual ipv4.dns 192.168.0.1
+	sudo nmcli connection modify "Wired connection 1" ipv4.addresses 192.168.1.100/255.255.255.0 ipv4.gateway 192.168.1.1 ipv4.method  manual ipv4.dns 192.168.0.1
+	
+	
+	sudo nmcli connection down "Wired connection 1"
+	sudo nmcli connection up "Wired connection 1"
+
+remove white splash between screens 
+add the chromium extension in the documnets folder with dev mode active
+
+
+
+
+KYLE STUFF
+http://127.0.0.1/api/platforms
+portainer docker 
+
+
