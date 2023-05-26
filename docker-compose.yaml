@@ -6,18 +6,18 @@ services:
   network_mode: "host"
   privileged: true
   volumes:
-   - shared_data:/app/shared_data
+   #- shared_data:/app/data
    - ./tcs_ui/case_ui:/app #used for development only to keep python code live
    - /home/main/Documents/tcs_ui_pipe:/app/compipe
   restart: on-failure
 
- disco-scanner:
-  image: disco-scanner
-  network_mode: "host"
-  volumes:
-   - shared_data:/app/shared_data
-  restart: on-failure
+ #disco-scanner:
+  #image: disco-scanner
+  #network_mode: "host"
+  #volumes:
+   #- shared_data:/app/data
+  #restart: on-failure
 
-volumes:
- shared_data:
+#volumes:
+ #shared_data:
 

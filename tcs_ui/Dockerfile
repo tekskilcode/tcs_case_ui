@@ -28,6 +28,6 @@ COPY ./case_ui /app/
 EXPOSE 8000
 
 # Run the development server
-CMD ["sh", "-c", "python3 manage.py runserver 0.0.0.0:8000"]
+CMD ["sh", "-c", "python3 manage.py runserver 127.0.0.69:8000"]
 
 

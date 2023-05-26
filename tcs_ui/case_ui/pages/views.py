@@ -27,19 +27,21 @@ def sleep(request):
 	return render(request, 'pages/sleep.html')
 
 def connect(request):
-	filename = "/app/shared_data/detected_systems.txt"
-	with open(filename, "w+") as file:
-		file_contents = file.read()
-		file.close()
-	if file_contents:
-		loaded_data = json.loads(str(file_contents))
-		data = {"systems":loaded_data}
-		# data = {"systems":[{"ip":"", "host_name": "No poops Found", "mac_address": "", "version": "", "time": ""}]}
-	else:
-		data= {"systems":[{"ip":"8.8.8.8", "host_name": "No Systems Found", "mac_address": "", "version": "", "time": ""}]}
+	# filename = "/app/data/detected_systems.txt"
+	# with open(filename, "w+") as file:
+	# 	file_contents = file.read()
+	# 	file.close()
+	# 	print("file ocntens")
+	# 	print(file_contents)
+	# if file_contents:
+	# 	print(file_contents)
+	# 	loaded_data = json.loads(str(file_contents))
+	# 	data = {"systems":loaded_data}
+	# 	# data = {"systems":[{"ip":"", "host_name": "No poops Found", "mac_address": "", "version": "", "time": ""}]}
+	# else:
+	# 	data= {"systems":[{"ip":"8.8.8.8", "host_name": "No Systems Found", "mac_address": "", "version": "", "time": ""}]}
 	
-	
-	return render(request, 'pages/connect.html', data)
+	return render(request, 'pages/connect.html')
 
 def custom_ip(request):
 	data = {"test":"testx"}

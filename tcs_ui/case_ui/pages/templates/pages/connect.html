@@ -38,6 +38,8 @@
 	<!-- Link to jQuery (required for Bootstrap JS) -->
 	<script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
 
+	<script src="{% static 'js/jquery-UI.js' %}"></script>
+
 	<!-- Link to the Bootstrap JS file -->
 	<script src="{% static 'js/bootstrap.min.js' %}"></script>
 
@@ -56,7 +58,7 @@
 <body>
     <div id="main_content" class="container">
         <div class="row mb-3 mt-3">
-            <div class="col-sm-6 flecks-center"><h1>List of Available Devices</h1></div>
+            <div class="col-sm-6 flecks-center"><h1>Platforms & Devices</h1></div>
             <div class="col-sm-3">
                 <div class="text-center info-box sm-text" @click="goToHome" id="goHome" >
 					Back
@@ -71,18 +73,89 @@
             
         <div class="row boarder-box">
             <div class="col-md-12 ">
-                {% for system in systems %}
-                    <div class="row each-item mt-2 mb-2" >
-                        <div class="col-sm-6"><h3>{{system.host_name}}</h3></div>
-                        <div class="col-sm-6 text-center"><h2 >{{system.ip}}</h2></div>
-                        <div class="col-sm-7 center-text"><h5 >{{system.version}}</h5></div>
-                        <div class="col-sm-2 mb-2"><button class="btn btn-success list-button" @click="testIP('{{system.ip }}', {{forloop.counter}} )">Test</button></div>
-                        <div class="col-sm-3"><h2 id="{{forloop.counter}}"></h2></div>
-                    </div>
-                {% endfor %}
+				<div class="row text-center mt-2 mb-2">
+					<h2>Platforms</h2>
+				</div>
+
+				<div class="row each-item mt-2 mb-2" v-for="(platform, platformIndex) in platforms">
+					<div class="col">
+						<h3 class="bb-2">${platform.label}</h3>
+						<div class="row" v-if="platform.cam" >
+							<div class="col">
+								<div class="row mt-2 mb-2" :class="{ 'device-offline': !platform.cam.available }">
+									<div class="col-sm-5"><h4>Camera: ${platform.cam.cameraType}</h4></div>
+									<div class="col-sm-4"><h4>${platform.cam.ip}</h4></div>
+									<div class="col-sm-3" v-if="platform.cam.available"><h4 class="success">Online</h4></div>
+									<div class="col-sm-3" v-else><h4>Offline</h4></div>
+								</div>
+							</div>
+						</div>
+						<div class="row" v-if="platform.pan" >
+							<div class="col">
+								<div class="row mt-2 mb-2" :class="{ 'device-offline': !platform.pan.available }">
+									<div class="col-sm-5"><h4>Pan Table</h4></div>
+									<div class="col-sm-4"><h4>${platform.pan.ip}</h4></div>
+									<div class="col-sm-3" v-if="platform.pan.available"><h4 class="success">Online</h4></div>
+									<div class="col-sm-3" v-else><h4>Offline</h4></div>
+								</div>
+							</div>
+						</div>
+						<div class="row" v-if="platform.ped" >
+							<div class="col">
+								<div class="row mt-2 mb-2" :class="{ 'device-offline': !platform.ped.available }">
+									<div class="col-sm-5"><h4>Pedestal</h4></div>
+									<div class="col-sm-4"><h4>${platform.ped.ip}</h4></div>
+									<div class="col-sm-3" v-if="platform.ped.available"><h4 class="success">Online</h4></div>
+									<div class="col-sm-3" v-else><h4>Offline</h4></div>
+								</div>
+							</div>
+						</div>
+						<div class="row" v-if="platform.fm" >
+							<div class="col">
+								<div class="row mt-2 mb-2" :class="{ 'device-offline': !platform.fm.available }">
+									<div class="col-sm-5"><h4>Floor Manager</h4></div>
+									<div class="col-sm-4"><h4>${platform.fm.ip}</h4></div>
+									<div class="col-sm-3" v-if="platform.fm.available"><h4 class="success">Online</h4></div>
+									<div class="col-sm-3" v-else><h4>Offline</h4></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row text-center mt-2 mb-2">
+					<h2>Solo Devices</h2>
+				</div>
+
+				<div class="row each-item mt-2 mb-2" v-for="(device, deviceIndex) in devices"  >
+					<div class="col-sm-6"><h3>${device.host_name}</h3></div>
+					<div class="col-sm-6 text-center"><h2 >${device.ip}</h2></div>
+					<div class="col-sm-7 center-text"><h5 >${device.version}</h5></div>
+					<div class="col-sm-2 mb-2"><button class="btn btn-success list-button" @click="testIP(device.ip, deviceIndex)">Test</button></div>
+					<div class="col-sm-3"><h2 v-bind:id="deviceIndex"></h2></div>
+				</div>
             </div>
         </div>
     </div>
+
+	  <!-- Shutdown Modal -->
+	  <div class="modal fade" id="scanning_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+
+				<div class="row">
+					<div id="spinner" class="spinner-border text-light" role="status">
+					</div>
+				</div>
+				<div class="row mt-2">
+			  		<h5 class="modal-title" id="exampleModalLabel">Sanning Network...</h5>
+				</div>
+
+		  </div>
+		</div>
+	  </div>
+
+	
 
 </body>
 
@@ -90,23 +163,59 @@
 	const { createApp } = Vue
 
 	createApp({
+		delimiters: ['${', '}'], // Set custom delimiters
 		data() {
 			return {
 				showQRArea:false,
 				lastActivity: Date.now(),
-                pingTimes:[]
+                pingTimes:[],
+				devices: [],
+				platforms: [],
+				scanningModal: new bootstrap.Modal($('#scanning_modal'))
 			}
 		},
 		beforeMount(){
-			$('body').hide();
+			//$('body').hide();
+			this.scanningModal.show();
+
 		},
-		mounted(){
+		async mounted(){
+	
 			setInterval(() => {
 				if (Date.now() - this.lastActivity > 90000) {
         			this.redirectToSleepPage();
       			}
     		}, 1000);
-			$('body').fadeIn(1000);
+						
+			scannedDevices = await this.getDevices();
+			apiPlatforms = await this.getPlatforms();
+
+			console.log(scannedDevices);
+
+			for (let platform of apiPlatforms) {
+				// Iterate over each device in the platform
+				delete platform.id;
+				delete platform.proxy;
+			
+				platformKeys = Object.keys(platform);
+				for (i = 0; i < platformKeys.length; i++) {//each device in the platform
+					result1 = scannedDevices.find(item => item.ip === platform[platformKeys[i]].ip);
+					if(result1){
+						platform[platformKeys[i]].available = true;
+						foundIndex = scannedDevices.indexOf(result1);
+						scannedDevices.splice(foundIndex, 1);
+					}else{
+						platform[platformKeys[i]].available = false;
+					}
+				}
+				console.log(platform);
+				this.platforms.push(platform);//update the VUE obj
+				this.devices = scannedDevices;
+			}
+
+			//$('body').fadeIn(1000);
+			this.scanningModal.hide();
+
 		},
 		methods:{
 			togleQRAreas(){
@@ -145,7 +254,28 @@
                 $('#'+retrunPosition).text(response.data.message+" ms");
                
                 console.log(response.data.message);
-            }
+				this.lastActivity= Date.now();
+            },
+			async getDevices(){
+				scan_response = await axios.get('/scan/', {
+					params: {
+                    	test: "test1",
+					}
+                });               
+				return(scan_response.data.message);
+			},
+			async getPlatforms(){
+				response = await axios.get('http://0.0.0.0:4002/api/platforms', {
+					params: {
+                    	
+					}
+                });
+                //$('#'+retrunPosition).text(response.data.message+" ms");
+               
+                console.log(response.data);
+				return(response.data);
+				
+			},
 		}
 	}).mount('#main_content')
 </script>

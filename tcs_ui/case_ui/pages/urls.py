@@ -9,5 +9,7 @@ urlpatterns = [
     path('custom_ip/', views.custom_ip, name='custom_ip'),
     path('check/', views.check, name='check'), 
     path('cust_ip/', rest.cust_ip, name='cust_ip'),
-    path('power/', rest.power, name='power')
+    path('power/', rest.power, name='power'),
+    path('scan/', rest.scan_devices, name='scan'),
+    
 ]

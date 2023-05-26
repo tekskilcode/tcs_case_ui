@@ -105,7 +105,7 @@ a{
 }
 
 .each-item{
-  border: 1px solid;
+  border: 2px solid;
   border-radius: 10px;
 }
 .boarder-box{
@@ -151,4 +151,28 @@ a{
   text-align: center;
   font-weight:500;
   color: #000000;
+}
+
+#scanning_modal .modal-content{
+  align-items: center;
+  position:relative;
+  top:200px;
+  background-color: black;
+}
+
+#scanning_modal #spinner{
+  --bs-spinner-width: 3rem;
+  --bs-spinner-height: 3rem;
+}
+
+.bb-2{
+  border-bottom: 2px solid;
+}
+
+.device-offline{
+  background-color: rgb(241, 104, 104);
+  color: #000000;
+}
+.success{
+  color:green;
 }
