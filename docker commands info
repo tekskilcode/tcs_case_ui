@@ -1,3 +1,17 @@
+sudo apt-get update 
+sudo apt-get upgrade 
+#reboot
+apt-get install git
+cd Documents
+git clone https://github.com/beta-things/tcs_case_ui.git
+#install displaylink 
+#reboot
+#install docker 
+https://docs.docker.com/engine/install/ubuntu/
+#build tcs or change compose.yaml to build for you
+#add services 
+
+
 docker load -i <tar-file>
 
 docker run -it --network host --mount type=volume,source=shared_data,target=/app/data  disco-scanner

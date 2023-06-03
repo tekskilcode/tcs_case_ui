@@ -6,7 +6,6 @@ services:
   network_mode: "host"
   privileged: true
   volumes:
-   #- shared_data:/app/data
    - ./tcs_ui/case_ui:/app #used for development only to keep python code live
    - /home/main/Documents/tcs_ui_pipe:/app/compipe
   restart: on-failure
