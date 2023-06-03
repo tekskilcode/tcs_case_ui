@@ -1,0 +1,9 @@
+[Unit]
+Description=Start the pipe out of docker	
+
+[Service]
+ExecStart=/home/main/Documents/monitor_pipe.sh
+
+[Install]
+WantedBy=default.target
+

@@ -1,0 +1,10 @@
+[Unit]
+Description=Initiate Docker Compose web ui
+[Service]
+WorkingDirectory=/usr/local/opt/apps/docker/tkskl-server
+Restart=unless-stopped
+ExecStart=/usr/bin/docker-compose up
+ExecStop=/usr/bin/docker-compose down
+
+[Install]
+WantedBy=multi-user.target

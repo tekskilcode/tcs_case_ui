@@ -1,0 +1,7 @@
+apt-get update 
+apt-get install git
+git clone <repository-url> .
+
+sudo apt-get install dkms
+sudo ./displaylink-driver-5.6.1-59.184.run
+reboot
