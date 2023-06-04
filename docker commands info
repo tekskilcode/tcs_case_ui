@@ -30,6 +30,7 @@ Startup services are in ect/systemd/system/
 	
 chromium is started by Gnome
 	-to edit the startup call terminal:  "gnome-session-properties"
+	chromium-browser --kiosk http://example.com
 	
 	
 

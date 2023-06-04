@@ -7,7 +7,7 @@ services:
   privileged: true
   volumes:
    - ./tcs_ui/case_ui:/app #used for development only to keep python code live
-   - /home/main/Documents/tcs_ui_pipe:/app/compipe
+   - /home/tch/Documents/tcs_ui_pipe:/app/compipe
   restart: on-failure
 
  #disco-scanner:
