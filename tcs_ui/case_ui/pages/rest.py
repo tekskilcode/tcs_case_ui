@@ -32,12 +32,22 @@ def cust_ip(request):
 		print('pipe connected')
 		if request.GET.get('req_dhcp') == 'true':
 			print('new dhcp please')
-			#request dhcp
-			message = 'dhclient -r enp3s0 \n'
+			message = 'nmcli connection modify "Wired connection 1" ipv4.method auto ipv4.addresses "" ipv4.dns "" ipv4.gateway "" \n'
 			os.write(pipe_fd, message.encode())
-			#time.sleep(1)
-			message2 = 'dhclient enp3s0 \n'
+			
+			print("ip changedx")
+			message2 = 'nmcli connection down "Wired connection 1" \n'
 			os.write(pipe_fd, message2.encode())
+			print("connection down")
+			message3 = 'nmcli connection up "Wired connection 1" \n'
+			os.write(pipe_fd, message3.encode())
+			print("connection up")
+			#request dhcp
+			#message = 'dhclient -r enp3s0 \n'
+			#os.write(pipe_fd, message.encode())
+			#time.sleep(1)
+			#message2 = 'dhclient enp3s0 \n'
+			#os.write(pipe_fd, message2.encode())
 			# message3 = 'dhclient \n'
 			# os.write(pipe_fd, message2.encode())
 			time.sleep(5)
