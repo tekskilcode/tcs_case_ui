@@ -8,4 +8,8 @@ sudo systemctl enable tcs_case_ui.service
 sudo systemctl enable tcs_pipe.service
 sudo systemctl enable tcs_web_ui.service 
 
- 
+sudo systemctl start tcs_case_ui.service 
+sudo systemctl start tcs_pipe.service
+sudo systemctl start tcs_web_ui.service 
+
+sudo mkfifo ./tcs_ui_pipe/compipe

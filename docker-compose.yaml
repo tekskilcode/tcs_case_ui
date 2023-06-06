@@ -2,7 +2,10 @@ version: "3"
 
 services:
  tekskil_server_case_ui:
-  image: tekskil_server_case_ui
+  #image: tekskil_server_case_ui
+  build:
+   context: ./tcs_ui
+   dockerfile: Dockerfile
   network_mode: "host"
   privileged: true
   volumes:

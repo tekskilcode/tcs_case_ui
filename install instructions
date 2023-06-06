@@ -4,19 +4,22 @@ apt-get install git
 git clone https://github.com/beta-things/tcs_case_ui.git .
 
 sudo ./displaylink-driver-5.6.1-59.184.run
-reboot
 
 #power settings
+	-stop screen savers
+	-high power mode 
+	
 #setup docker 
-#apt-get install docker-compose 
-docker build -t tekskil_case_ui
-#install kyle's stuff
-#install service files 
-#enable services 
+
 apt-get install chromium-browser 
+
+#install kyle's stuff
+
+#install service files 
+
 gnome-session-properties
 chromium-browser --kiosk file:///home/tch/Documents/loading.html
 #install chromium black in extensions in dev mode 
 #set background to screenshot 
-sudo mkfifo compipe in Documents/tcs_ui_pipe
+
 
