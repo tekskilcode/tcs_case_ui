@@ -23,12 +23,8 @@ trigger_udev() {
 # Function to display the interface information
 display_interface_info() {
     echo "Interface renamed successfully."
-    echo "Old interface name: $current_interface"
     echo "New interface name: enp3s0"
 }
-
-# Main script
-read -p "Enter the current interface name: " current_interface
 
 add_udev_rule
 trigger_udev

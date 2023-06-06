@@ -3,23 +3,31 @@ apt-get install upgrade
 apt-get install git
 git clone https://github.com/beta-things/tcs_case_ui.git .
 
-sudo ./displaylink-driver-5.6.1-59.184.run
+sudo DisplayLink_USB_Ubuntu_5.6.1/displaylink-driver-5.6.1-59.184.run
 
 #power settings
 	-stop screen savers
 	-high power mode 
+	-do not disturb
 	
-#setup docker 
-
-apt-get install chromium-browser 
+#setup docker
+sudo ./install_docker.sh
+ 
+#chromium and autostart
+sudo ./install_chromium_services.sh
 
 #install kyle's stuff
+extract to Downloads
+sudo /home/tch/Downloads/tkskl-server-setup/setup_server.sh 
 
-#install service files 
+#install service files and add compipe
 
-gnome-session-properties
-chromium-browser --kiosk file:///home/tch/Documents/loading.html
+set chrome autostart
+
+stop crash notification
+
 #install chromium black in extensions in dev mode 
-#set background to screenshot 
+
+#set desktop background to screenshot 
 
 
