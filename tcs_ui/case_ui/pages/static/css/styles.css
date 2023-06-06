@@ -59,11 +59,11 @@ a{
 }
 
 .qr-area{
-  width: 399px;
+  width: 511px;
   position: absolute;
   padding: 36px 6px;
   background-color: black;
-  left: 39px;
+  left: 57px;
   top: -63px;
   z-index: 1000;
 }
