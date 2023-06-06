@@ -76,8 +76,8 @@ a{
   background-color: black;
   color: rgb(141, 140, 140);
   border: 2px solid rgb(141, 140, 140);
-  padding: 2px;
-  font-size: 3.25em;
+  padding: 10px;
+  font-size: 2.5em;
   font-weight: 100;
   border-radius: 33px;
   width:100%;
@@ -112,9 +112,18 @@ a{
   border: 2px solid;
   border-radius: 10px;
   padding:0px 16px;
-  height: 380px;
+  
   overflow-y:scroll;
   overflow-x: hidden;
+}
+
+.boarder-box-scroll{
+	border: 2px solid;
+	border-radius: 10px;
+	padding:0px 16px;
+	height:75vh;
+	overflow-y:scroll;
+	overflow-x: hidden;
 }
 
 /* Target the scrollbar */
@@ -144,7 +153,7 @@ a{
 }
 
 .sm-text{
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 #num-pad-title{
