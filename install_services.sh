@@ -12,4 +12,5 @@ sudo systemctl start tcs_case_ui.service
 sudo systemctl start tcs_pipe.service
 sudo systemctl start tcs_web_ui.service 
 
+mkdir tcs_ui_pipe
 sudo mkfifo ./tcs_ui_pipe/compipe
