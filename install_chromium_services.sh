@@ -4,7 +4,7 @@ sudo apt-get install chromium-browser
 
 # Name and command for the startup program
 NAME="Chrome-boot-init"
-COMMAND="chromium-browser --kiosk file:///home/tch/Documents/loading.html"
+COMMAND="chromium-browser --disable-features=OverscrollHistoryNavigation --clear-browsing-history --kiosk file:///home/tch/Documents/loading.html"
 
 # Create the autostart directory if it doesn't exist
 AUTOSTART_DIR="/home/tch/.config/autostart"
