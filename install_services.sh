@@ -14,3 +14,10 @@ sudo systemctl start tcs_web_ui.service
 
 mkdir tcs_ui_pipe
 sudo mkfifo ./tcs_ui_pipe/compipe
+
+sudo apt install gnome-shell-extensions
+
+wget "https://extensions.gnome.org/extension-data/disable-gestures-2021verycrazydog.gmail.com.v4.shell-extension.zip"
+
+gnome-extensions install disable-gestures-2021verycrazydog.gmail.com.v4.shell-extension.zip
+gnome-extensions enable disable-gestures-2021@verycrazydog.gmail.com
