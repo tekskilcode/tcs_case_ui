@@ -7,4 +7,4 @@ cd /home/tch/Downloads/tkskl-server-setup
 
 sudo ./setup_server.sh
 
-sudo ln -s /usr/local/opt/apps apps
+sudo ln -s /usr/local/opt/apps /home/tch/apps
