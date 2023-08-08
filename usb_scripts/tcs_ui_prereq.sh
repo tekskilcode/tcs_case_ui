@@ -15,11 +15,6 @@ echo "///Clone TCS UI repository///"
 sudo -u $SUDO_USER git clone https://github.com/beta-things/tcs_case_ui.git /home/tch/Documents
 cd /home/tch/Documents
 
-echo "///Install DisplayLink driver///"
-#sudo ./DisplayLink_USB_Ubuntu_5.6.1/displaylink-driver-5.6.1-59.184.run
-sudo chmod +x ./DisplayLink_USB_Graphics_5.7/displaylink-driver-5.7.0-61.129.run
-sudo ./DisplayLink_USB_Graphics_5.7/displaylink-driver-5.7.0-61.129.run
-
 echo "///Setup Docker///"
 sudo ./install_docker.sh
 
@@ -35,5 +30,10 @@ sudo ./stop_crash_notifications.sh
 
 echo "///set interface name///"
 sudo ./change_net_interface.sh
+
+echo "///Install DisplayLink driver///"
+#sudo ./DisplayLink_USB_Ubuntu_5.6.1/displaylink-driver-5.6.1-59.184.run
+sudo chmod +x ./DisplayLink_USB_Graphics_5.7/displaylink-driver-5.7.0-61.129.run
+sudo ./DisplayLink_USB_Graphics_5.7/displaylink-driver-5.7.0-61.129.run
 
 echo "///PRE-REQUISITES INSTALL COMPLETE///"
