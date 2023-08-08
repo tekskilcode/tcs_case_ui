@@ -16,7 +16,8 @@ sudo -u $SUDO_USER git clone https://github.com/beta-things/tcs_case_ui.git /hom
 cd /home/tch/Documents
 
 echo "///Install DisplayLink driver///"
-sudo ./DisplayLink_USB_Ubuntu_5.6.1/displaylink-driver-5.6.1-59.184.run
+#sudo ./DisplayLink_USB_Ubuntu_5.6.1/displaylink-driver-5.6.1-59.184.run
+sudo ./DisplayLink_USB_Graphics_5.7/displaylink-driver-5.7.0-61.129.run
 
 echo "///Setup Docker///"
 sudo ./install_docker.sh
