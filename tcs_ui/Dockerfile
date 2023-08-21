@@ -25,9 +25,9 @@ CMD ["sh", "-c", "python3 manage.py migrate"]
 COPY ./case_ui /app/
 
 # Expose the port Django will run on
-EXPOSE 8000
+EXPOSE 6969
 
 # Run the development server
-CMD ["sh", "-c", "python3 manage.py runserver 127.0.0.69:8000"]
+CMD ["sh", "-c", "python3 manage.py runserver 0.0.0.0:6969"]
 
 
