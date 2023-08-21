@@ -16,7 +16,9 @@ def home(request):
 	if len(ni.ifaddresses('enp3s0'))>1 :
 		data = {'theNum': str(ni.ifaddresses('enp3s0')[ni.AF_INET][0]['addr'])}
 		data["hasNetwork"] = True
-		HOSTS.append(ni.ifaddresses('enp3s0')[ni.AF_INET][0]['addr'])
+		theIP = ni.ifaddresses('enp3s0')[ni.AF_INET][0]['addr']
+		if theIP not in HOSTS:
+   			HOSTS.append(theIP)
 	else:
 		data = {'theNum': "No Connection"}
 		data["hasNetwork"] = False
