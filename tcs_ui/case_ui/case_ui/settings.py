@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+from case_ui.allowed_hosts import HOSTS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,9 +26,7 @@ SECRET_KEY = 'django-insecure-j9+gblx(f4p%=6nml)*_nli0&z_)qv-ev6n(m&vmnr7v@9zhd=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '127.0.0.69',
-]
+ALLOWED_HOSTS = HOSTS
 
 
 
