@@ -8,12 +8,15 @@ import psutil
 from django.shortcuts import render
 from django.http import JsonResponse
 
+from case_ui.allowed_hosts import HOSTS
+
 
 # Create your views here.
 def home(request):
 	if len(ni.ifaddresses('enp3s0'))>1 :
 		data = {'theNum': str(ni.ifaddresses('enp3s0')[ni.AF_INET][0]['addr'])}
 		data["hasNetwork"] = True
+		HOSTS.append(ni.ifaddresses('enp3s0')[ni.AF_INET][0]['addr'])
 	else:
 		data = {'theNum': "No Connection"}
 		data["hasNetwork"] = False
