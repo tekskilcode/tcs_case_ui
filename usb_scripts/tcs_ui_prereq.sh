@@ -5,7 +5,7 @@ sudo apt-get update
 sudo apt-get upgrade
 
 #certain programs use specific folder name so make a tch symlink
-sudo ln -s /home/tkskl-admin /home/tch
+#sudo ln -s /home/tkskl-admin /home/tch
 
 
 echo "///Install Git///"
