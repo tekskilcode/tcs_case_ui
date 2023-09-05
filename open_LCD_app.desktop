@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=openLCDapp
-Exec=chromium-browser --disable-features=OverscrollHistoryNavigation --disable-pinch --clear-browsing-history --kiosk file:///home/tch/Documents/loading.html
-Terminal=true
-Type=Application
-
-
-
-

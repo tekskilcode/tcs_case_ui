@@ -1,0 +1,44 @@
+apt-get update
+apt-get upgrade
+apt-get install git
+git clone https://github.com/beta-things/tcs_case_ui.git /home/tch/Documents 
+cd /home/tch/Documents
+sudo DisplayLink_USB_Ubuntu_5.6.1/displaylink-driver-5.6.1-59.184.run
+
+#setup docker
+sudo ./install_docker.sh
+ 
+#chromium and autostart
+sudo ./install_chromium_services.sh
+
+#install kyle's stuff
+#open usb and right click choose open in terminal
+
+sudo ./install_web_server.sh
+
+#install service files and add compipe
+cd /home/tch/Documents
+sudo ./install_services.sh
+
+#stop crash notification
+sudo ./stop_crash_notifications.sh
+
+#check and change interface name 
+#to check type
+ip addr
+#scroll up and look for enp3s0 if not exists run the following
+./change_net_interface.sh
+#check again 
+ip addr
+
+
+#power settings
+	-high power mode 
+	-stop screen savers
+	-do not disturb
+
+#install chromium black in extensions in dev mode 
+
+#set desktop background to screenshot 
+
+
