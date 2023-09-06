@@ -13,7 +13,7 @@ sudo systemctl start tcs_pipe.service
 sudo systemctl start tcs_web_ui.service 
 
 mkdir /home/tch/apps/tcs_ui/tcs_ui_pipe
-sudo chown -R $SUDO_USER:$SUDO_USER /home/tch/apps/tcs_ui/tcs_ui_pipe
+sudo chmod -R 777 /home/tch/apps/tcs_ui/tcs_ui_pipe
 sudo mkfifo /home/tch/apps/tcs_ui/tcs_ui_pipe/compipe
 
 sudo apt install gnome-shell-extensions
