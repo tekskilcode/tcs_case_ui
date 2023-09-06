@@ -8,7 +8,7 @@ cp -r /home/tch/apps/tcs_ui/install/loading_page /home/tch/loading_page
 
 echo "///change owner///"
 
-sudo chown -R $SUDO_USER:$SUDO_USER /home/tch/loading_page
+sudo chmod 777 -R /home/tch/loading_page
 
 # Name and command for the startup program
 NAME="Chrome-boot-init"
