@@ -1,6 +1,8 @@
 #!/bin/bash
 
 sudo mkdir -p /usr/local/opt/apps/tcs_ui
+sudo chmod -R 777 /usr/local/opt/apps/tcs_ui
+
 
 
 #echo "Update and upgrade packages"
@@ -22,7 +24,7 @@ echo "///Setup Docker///"
 sudo ./install_docker.sh
 
 echo "///Install Chromium and autostart browser///"
-sudo ./install_chromium_services.sh
+sudo SUDO_USER="$SUDO_USER" sh  ./install_chromium_services.sh
 
 
 echo "///Install services///"
