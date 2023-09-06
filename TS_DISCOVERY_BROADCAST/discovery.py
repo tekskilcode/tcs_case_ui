@@ -6,7 +6,7 @@ import os
 ip = '0.0.0.0'
 ip2 = '0.0.0.0'
 
-INSTALL_PATH = '/home/floormanager/fm_python/'
+INSTALL_PATH = '/app/tcs_version'
 
 VERSION = "V:UNKNOWN | Tekskil Control Hub"
 

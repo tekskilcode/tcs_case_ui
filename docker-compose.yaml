@@ -10,16 +10,17 @@ services:
   privileged: true
   volumes:
    - ./tcs_ui/case_ui:/app #used for development only to keep python code live
-   - /home/tch/Documents/tcs_ui_pipe:/app/compipe
+   - /home/tch/apps/tcs_ui/tcs_ui_pipe:/app/compipe
+  restart: on-failure
+  
+ tekskil_discovery_broadcast:
+  build:
+   context: ./TS_DISCOVERY_BROADCAST
+   dockerfile: Dockerfile
+  network_mode: "host"
+  volumes:
+   - /home/tch/apps/tcs_ui/version:/app/tcs_version
   restart: on-failure
 
- #disco-scanner:
-  #image: disco-scanner
-  #network_mode: "host"
-  #volumes:
-   #- shared_data:/app/data
-  #restart: on-failure
 
-#volumes:
- #shared_data:
 

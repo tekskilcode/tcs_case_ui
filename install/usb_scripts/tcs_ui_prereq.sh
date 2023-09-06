@@ -1,19 +1,22 @@
 #!/bin/bash
 
+sudo mkdir -p /usr/local/opt/apps/tcs_ui
+
+
 #echo "Update and upgrade packages"
 sudo apt-get update
 sudo apt-get upgrade
-
-#certain programs use specific folder name so make a tch symlink
-#sudo ln -s /home/tkskl-admin /home/tch
 
 
 echo "///Install Git///"
 sudo apt-get install git
 
 echo "///Clone TCS UI repository///"
-sudo -u $SUDO_USER git clone https://github.com/beta-things/tcs_case_ui.git /home/tch/Documents
-cd /home/tch/Documents
+sudo -u $SUDO_USER git clone https://github.com/beta-things/tcs_case_ui.git /usr/local/opt/apps/tcs_ui
+
+sudo ln -s /usr/local/opt/apps /home/tch/apps
+
+cd /home/tch/apps/tcs_ui/install
 
 echo "///Setup Docker///"
 sudo ./install_docker.sh
@@ -21,7 +24,7 @@ sudo ./install_docker.sh
 echo "///Install Chromium and autostart browser///"
 sudo ./install_chromium_services.sh
 
-cd /home/tch/Documents
+
 echo "///Install services///"
 sudo ./install_services.sh
 
@@ -35,7 +38,7 @@ echo "///Install DisplayLink driver///"
 #sudo ./DisplayLink_USB_Ubuntu_5.6.1/displaylink-driver-5.6.1-59.184.run
 #sudo chmod +x ./DisplayLink_USB_Graphics_5.7/displaylink-driver-5.7.0-61.129.run
 #sudo ./DisplayLink_USB_Graphics_5.7/displaylink-driver-5.7.0-61.129.run
-sudo apt install ./install/synaptics-repository-keyring.deb
+sudo apt install ./synaptics-repository-keyring.deb
 sudo apt update
 sudo apt install displaylink-driver
 

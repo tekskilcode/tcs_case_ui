@@ -2,7 +2,7 @@
 Description=Initiate Docker Compose TCS UI
 
 [Service]
-WorkingDirectory=/home/tch/Documents
+WorkingDirectory=/home/tch/apps/tcs_ui
 Restart=on-failure
 ExecStart=sudo /usr/bin/docker-compose up
 ExecStop=sudo /usr/bin/docker-compose down
