@@ -20,6 +20,7 @@ services:
   network_mode: "host"
   volumes:
    - /home/tch/apps/tcs_ui/version:/app/tcs_version
+   - /home/tch/apps/docker/tkskl-server/.env:/app/tkskl-server/version.txt
   restart: on-failure
 
 

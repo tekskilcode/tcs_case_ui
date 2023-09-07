@@ -7,6 +7,7 @@ ip = '0.0.0.0'
 ip2 = '0.0.0.0'
 
 INSTALL_PATH = '/app/tcs_version'
+WEB_UI_PATH = '/app/tkskl-server'
 
 VERSION = "V:UNKNOWN | Tekskil Control Hub"
 
@@ -22,10 +23,21 @@ sock.bind(('0.0.0.0', 2860))
 
 if os.path.exists(INSTALL_PATH + '/' + 'version.txt'):
     f = open(INSTALL_PATH + '/' + 'version.txt', "r")
-    VERSION = "V:"+f.readline().strip()  + " | Tekskil Control Hub"
+    VERSION = f.readline().strip() + " | "
     f.close()
 else:
-    VERSION = "V:UNKNOWN | Tekskil Control Hub"
+    VERSION = "V:NOVERSIONFILE | Tekskil Control Hub"
+
+if os.path.exists(WEB_UI_PATH + '/' + 'version.txt'):
+    f = open(WEB_UI_PATH + '/' + 'version.txt', "r")
+    lines = []
+    
+    for line in f:
+    	 lines.append(line.strip())
+    
+    web_versions = " | ".join(lines)
+    VERSION = VERSION + web_versions 
+    f.close()
 
 while(1==1):
     ni.ifaddresses('enp3s0')
