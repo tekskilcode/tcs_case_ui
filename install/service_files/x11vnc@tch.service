@@ -1,0 +1,12 @@
+[Unit]
+Description=Start X11VNC at startup.
+Requires=display-manager.service
+After=display-manager.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/x11vnc -find -rfbauth /home/tch/.vnc/passwd -rfbport 5900 -allow 100. -forever -loop -noxdamage -repeat -shared
+User=%I
+
+[Install]
+WantedBy=multi-user.target

@@ -36,6 +36,14 @@ cd /home/tch/apps/tcs_ui/install
 echo "///Install Chromium and autostart browser///"
 sudo SUDO_USER="$SUDO_USER" sh  ./install_chromium_services.sh
 
+echo "///Install VNC server///"
+sudo ./install_vnc.sh
+
+echo "///Install Tailscale///"
+sudo ./install_tailscale.sh
+
+echo "///Install utilities///"
+sudo ./install_utils.sh
 
 echo "///Install services///"
 sudo ./install_services.sh
@@ -57,3 +65,9 @@ sudo apt install displaylink-driver
 
 
 echo "///PRE-REQUISITES INSTALL COMPLETE///"
+
+# Display information about Tailscale and x11vnc
+./tailscale-vnc-info.sh
+
+# Let the user know that a reboot is required for the WaylandEnable setting we changed to take effect.
+echo "Please reboot so that GDM uses Xorg."
