@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# This script must be run as the root user (by sudo)
+
+if [[ $UID != 0 ]]; then
+    echo "Please run this script with sudo:"
+    echo "sudo $0 $*"
+    exit 1
+fi
+
 sudo mkdir -p /usr/local/opt/apps/tcs_ui
 sudo chmod -R 777 /usr/local/opt/apps/tcs_ui
 
@@ -12,12 +20,11 @@ sudo apt-get -y purge unattended-upgrades
 sudo apt-get update
 sudo apt-get -y upgrade
 
-
 echo "///Install Git///"
 sudo apt-get -y install git curl
 
 echo "///Clone TCS UI repository///"
-sudo -u $SUDO_USER git clone https://github.com/beta-things/tcs_case_ui.git /usr/local/opt/apps/tcs_ui
+sudo -u $SUDO_USER git clone -b vnc-install https://github.com/beta-things/tcs_case_ui.git /usr/local/opt/apps/tcs_ui
 
 sudo ln -s /usr/local/opt/apps /home/tch/apps
 
@@ -27,6 +34,8 @@ sudo sh /home/tch/apps/tcs_ui/install/install_docker.sh
 echo "///Install WEB SERVER ///"
 #sudo SUDO_USER="$SUDO_USER" sh  ./install_web_server.sh
 #extract contents to Downloads
+
+# This file must be downloaded to ~/Downloads before running this script.
 tar -xf tkskl-server-setup.tar -C /home/tch/Downloads
 
 cd /home/tch/Downloads/tkskl-server-setup
