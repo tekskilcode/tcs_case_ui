@@ -11,7 +11,7 @@ sudo apt-get upgrade
 
 
 echo "///Install Git///"
-sudo apt-get -y install git
+sudo apt-get -y install git curl
 
 echo "///Clone TCS UI repository///"
 sudo -u $SUDO_USER git clone https://github.com/beta-things/tcs_case_ui.git /usr/local/opt/apps/tcs_ui
@@ -39,11 +39,11 @@ sudo SUDO_USER="$SUDO_USER" sh  ./install_chromium_services.sh
 echo "///Install VNC server///"
 sudo ./install_vnc.sh
 
-echo "///Install Tailscale///"
-sudo ./install_tailscale.sh
-
 echo "///Install utilities///"
 sudo ./install_utils.sh
+
+echo "///Install Tailscale///"
+sudo ./install_tailscale.sh
 
 echo "///Install services///"
 sudo ./install_services.sh

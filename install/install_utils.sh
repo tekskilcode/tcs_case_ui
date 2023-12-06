@@ -1,4 +1,4 @@
-sudo apt-get install -y mosh vim curl tmux git net-tools python3-pip btop fonts-powerline
+sudo apt-get install -y mosh vim tmuxnet-tools python3-pip btop fonts-powerline
 
 echo "Installing fzf for tch"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
