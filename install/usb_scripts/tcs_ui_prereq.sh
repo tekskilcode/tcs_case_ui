@@ -10,7 +10,7 @@ sudo apt-get purge unattended-upgrades
 
 #echo "Update and upgrade packages"
 sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get -y upgrade
 
 
 echo "///Install Git///"
