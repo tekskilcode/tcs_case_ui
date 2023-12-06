@@ -1,3 +1,4 @@
+#!/bin/bash
 sudo apt-get install -y mosh vim tmuxnet-tools python3-pip btop fonts-powerline
 
 echo "Installing fzf for tch"

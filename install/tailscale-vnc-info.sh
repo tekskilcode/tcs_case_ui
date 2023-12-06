@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "To check the status of the x11vnc services:"
 echo "sudo journalctl -f -u x11vnc@gdm.service"
 echo "sudo journalctl -f -u x11vnc@tch.service"

@@ -62,9 +62,9 @@ echo "///Install DisplayLink driver///"
 #sudo ./DisplayLink_USB_Ubuntu_5.6.1/displaylink-driver-5.6.1-59.184.run
 #sudo chmod +x ./DisplayLink_USB_Graphics_5.7/displaylink-driver-5.7.0-61.129.run
 #sudo ./DisplayLink_USB_Graphics_5.7/displaylink-driver-5.7.0-61.129.run
-sudo apt install ./synaptics-repository-keyring.deb
+sudo apt install -y ./synaptics-repository-keyring.deb
 sudo apt update
-sudo apt install displaylink-driver
+sudo apt install -y displaylink-driver
 
 
 echo "///PRE-REQUISITES INSTALL COMPLETE///"
