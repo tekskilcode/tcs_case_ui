@@ -11,7 +11,7 @@ sudo apt-get upgrade
 
 
 echo "///Install Git///"
-sudo apt-get install git
+sudo apt-get -y install git
 
 echo "///Clone TCS UI repository///"
 sudo -u $SUDO_USER git clone https://github.com/beta-things/tcs_case_ui.git /usr/local/opt/apps/tcs_ui
