@@ -4,8 +4,6 @@ echo "Installing fzf for tch"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --all
 
-function install_powerline {
-
 echo "Installing powerline for tch"
 pip install powerline-status
 
@@ -16,10 +14,6 @@ POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 . \$REPOSITORY_ROOT/powerline/bindings/bash/powerline.sh
 EOT
-
-}
-
-install_powerline
 
 # wget https://github.com/powerline/fonts/raw/master/Meslo%20Slashed/Meslo%20LG%20M%20Regular%20for%20Powerline.ttf
 
