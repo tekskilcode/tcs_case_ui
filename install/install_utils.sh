@@ -20,9 +20,9 @@ EOT
 
 echo "Creating tmux conf"
 tee ~/.tmux.conf <<EOT
-run-shell \"powerline-daemon -q\"
+run-shell "powerline-daemon -q"
 source \$REPOSITORY_ROOT/powerline/bindings/tmux/powerline.conf
-set-option -g default-terminal \"screen-256color\"
+set-option -g default-terminal "screen-256color"
 set -g prefix C-a
 set -g mouse on
 EOT
