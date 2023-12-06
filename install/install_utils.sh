@@ -1,29 +1,29 @@
 #!/bin/bash
 sudo apt-get install -y mosh vim tmux net-tools python3-pip btop fonts-powerline
 
-echo "Installing fzf for tch"
-sudo -H -u tch bash -c "git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf"
-sudo -H -u tch bash -c "~/.fzf/install --all"
+echo "Installing fzf"
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --all
 
-echo "Installing powerline for tch"
+echo "Installing powerline"
 pip install powerline-status
 
-sudo -H -u tch bash -c "tee -a ~/.bashrc <<EOT
-export PATH=\\\$PATH:\\\$HOME/.local/bin
-export REPOSITORY_ROOT=\\\$(pip show powerline-status | grep Location | awk '{print \\\$2}')
+tee -a ~/.bashrc <<EOT
+export PATH=\$PATH:\$HOME/.local/bin
+export REPOSITORY_ROOT=\$(pip show powerline-status | grep Location | awk '{print \$2}')
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
-. \\\$REPOSITORY_ROOT/powerline/bindings/bash/powerline.sh
-EOT"
+. \$REPOSITORY_ROOT/powerline/bindings/bash/powerline.sh
+EOT
 
 # wget https://github.com/powerline/fonts/raw/master/Meslo%20Slashed/Meslo%20LG%20M%20Regular%20for%20Powerline.ttf
 
 echo "Creating tmux conf"
-sudo -H -u tch bash -c "tee ~/.tmux.conf <<EOT
+tee ~/.tmux.conf <<EOT
 run-shell \"powerline-daemon -q\"
-source \\\$REPOSITORY_ROOT/powerline/bindings/tmux/powerline.conf
+source \$REPOSITORY_ROOT/powerline/bindings/tmux/powerline.conf
 set-option -g default-terminal \"screen-256color\"
 set -g prefix C-a
 set -g mouse on
-EOT"
+EOT
 
