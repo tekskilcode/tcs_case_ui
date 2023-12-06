@@ -6,7 +6,7 @@ sudo chmod -R 777 /usr/local/opt/apps/tcs_ui
 
 echo "///Disable and remove unattended-upgrades///"
 sudo systemctl stop unattended-upgrades
-sudo apt-get purge unattended-upgrades
+sudo apt-get -y purge unattended-upgrades
 
 #echo "Update and upgrade packages"
 sudo apt-get update
