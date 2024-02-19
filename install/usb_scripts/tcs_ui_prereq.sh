@@ -25,7 +25,7 @@ echo "///Install Git///"
 sudo apt-get -y install git curl
 
 echo "///Clone TCS UI repository///"
-git clone https://github.com/beta-things/tcs_case_ui.git /usr/local/opt/apps/tcs_ui
+git clone https://github.com/tekskilcode/tcs_case_ui.git /usr/local/opt/apps/tcs_ui
 #cp -r /home/tch/tcs_case_ui/* /usr/local/opt/apps/tcs_ui
 
 sudo ln -s /usr/local/opt/apps /home/tch/apps
