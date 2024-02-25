@@ -8,6 +8,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 echo "Installing powerline"
 pip install powerline-status
 
+if ! grep -q POWERLINE ~/.bashrc; then
 tee -a ~/.bashrc <<EOT
 export PATH=\$PATH:\$HOME/.local/bin
 export REPOSITORY_ROOT=\$(pip show powerline-status | grep Location | awk '{print \$2}')
@@ -15,6 +16,8 @@ POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 . \$REPOSITORY_ROOT/powerline/bindings/bash/powerline.sh
 EOT
+fi
+
 
 # wget https://github.com/powerline/fonts/raw/master/Meslo%20Slashed/Meslo%20LG%20M%20Regular%20for%20Powerline.ttf
 
