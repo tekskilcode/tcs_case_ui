@@ -22,4 +22,4 @@ echo \
   sudo apt-get -y install docker-compose
 
 sudo usermod -aG docker tch
-sudo newgrp docker
+#sudo newgrp docker
