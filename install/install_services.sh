@@ -26,5 +26,5 @@ sudo mkfifo /home/tch/apps/tcs_ui/tcs_ui_pipe/compipe
 
 sudo apt install -y gnome-shell-extensions
 
-sudo -u tch gnome-extensions install disable-gestures-2021verycrazydog.gmail.com.v4.shell-extension.zip
+gnome-extensions install --force disable-gestures-2021verycrazydog.gmail.com.v4.shell-extension.zip
 
