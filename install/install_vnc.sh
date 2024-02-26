@@ -1,6 +1,13 @@
 #!/bin/bash
 
-./setup_vnc_password.sh
+#./setup_vnc_password.sh
+
+sudo apt-get install -y x11vnc
+
+mkdir -p /home/tch/.vnc
+echo -e -n $VNC_PASSWD > /home/tch/.vnc/passwd  
+sudo cp /home/tch/.vnc/passwd /etc/vncpasswd
+sudo chown gdm /etc/vncpasswd
 
 echo "Setting up VNC Services"
 
