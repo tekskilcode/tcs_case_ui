@@ -46,9 +46,10 @@ sudo rm -rf /home/tch/.config/autostart
 sudo rm -rf /etc/x11vnc-gdm.sh
 sudo rm -rf /home/tch/.vnc/passwd /etc/vncpasswd
 
-# Uninstall tailscale, but keep any state information
+# Uninstall tailscale, and delete all state information
 
-#sudo apt-get -y remove tailscale
+sudo apt-get -y remove tailscale
+sudo /var/lib/tailscale/tailscaled.state
 
 # Stop and remove services
 
