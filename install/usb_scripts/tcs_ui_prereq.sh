@@ -188,5 +188,6 @@ sleep 2
 echo "Please reboot for changes to take effect."
 echo ""
 sleep 2
-read -p "Press enter to continue"
+read -r -p "Press enter to continue" foo </dev/tty
+
 
