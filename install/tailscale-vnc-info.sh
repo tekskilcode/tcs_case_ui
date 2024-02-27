@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set +e
+
 echo "To check the status of the x11vnc services:"
 echo "sudo journalctl -f -u x11vnc@gdm.service"
 echo "sudo journalctl -f -u x11vnc@tch.service"
@@ -18,5 +20,9 @@ printf "\n"
 echo "When you initially SSH to this machine, you will get a prompt from Tailscale to login. This must be done before attempting to use mosh."
 
 echo "Be sure to find this machine in the Tailscale control panel, click '...', and 'Disable Key Expiry'"
+
+echo "If the Tailscale IP is not displayed above, the Tailscale Auth Key may be invalid or expired."
+
+set -e
 
 printf "\n"

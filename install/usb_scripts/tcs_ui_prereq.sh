@@ -157,7 +157,7 @@ echo "///Install utilities///"
 ./install_utils.sh
 
 echo "///Install Tailscale///"
-#./install_tailscale.sh
+./install_tailscale.sh
 
 echo "///Install services///"
 ./install_services.sh
