@@ -184,4 +184,6 @@ echo "///PRE-REQUISITES INSTALL COMPLETE///"
 
 # Let the user know that a reboot is required for the WaylandEnable setting we changed to take effect.
 echo "Please reboot for changes to take effect."
+echo ""
+read -p "Press enter to continue"
 
