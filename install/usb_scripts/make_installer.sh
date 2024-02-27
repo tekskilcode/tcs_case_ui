@@ -25,6 +25,16 @@ if [[ $UID = 0 ]]; then
     exit 1
 fi
 
+echo "///Disable and remove unattended-upgrades///"
+
+set +e
+sudo systemctl stop unattended-upgrades
+sudo apt-get -y purge unattended-upgrades
+
+#sudo dpkg-reconfigure -plow unattended-upgrades
+#sudo systemctl status unattended-upgrades.service
+set -e
+
 sudo apt update
 sudo apt install -y curl
 

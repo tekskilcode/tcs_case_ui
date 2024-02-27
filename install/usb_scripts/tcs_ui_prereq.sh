@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -e		# Stop if error
 
 if [[ $UID = 0 ]]; then
     echo "Do not run this script as root."
@@ -11,6 +11,7 @@ fi
 # UNINSTALL ===========================================================
 
 echo "///Remove previous install///"
+set +e
 
 sudo rm -rf /usr/local/opt/apps/tcs_ui
 sudo rm -rf ~/apps
@@ -28,12 +29,10 @@ sudo chmod -R 777 /usr/local/opt/apps/docker
 sudo apt-get purge -y docker-engine docker docker.io docker-ce docker-ce-cli docker-compose-plugin
 sudo apt-get autoremove -y --purge docker-engine docker docker.io docker-ce docker-compose-plugin
 
-set +e
 sudo rm -rf /var/lib/docker /etc/docker
 sudo rm /etc/apparmor.d/docker
-set -e
+
 sudo groupdel docker
-set +e
 sudo rm -rf /var/run/docker.sock
 
 # Uninstall changes made in install_chromium_services.sh
@@ -76,9 +75,10 @@ rm -rf /home/tch/apps/tcs_ui/tcs_ui_pipe
 # Install =============================================================
 
 echo "///Disable and remove unattended-upgrades///"
-set +e
+
 sudo systemctl stop unattended-upgrades
 sudo apt-get -y purge unattended-upgrades
+
 set -e
 
 #echo "Update and upgrade packages"
@@ -86,7 +86,7 @@ sudo apt-get update
 sudo apt-get -y upgrade
 
 echo "///Install Git///"
-sudo apt-get -y install git curl
+sudo apt-get -y install git curl jq
 
 echo "///Clone TCS UI repository///"
 git clone https://github.com/tekskilcode/tcs_case_ui.git /usr/local/opt/apps/tcs_ui
@@ -135,11 +135,15 @@ sudo tar zxvf $RELEASE_NAME --strip-components=1 -C /usr/local/opt/apps/docker
 
 export GHCR_TOKEN=$GITHUB_TOKEN
 export CR_PAT=$GITHUB_TOKEN
-echo $CR_PAT | docker login ghcr.io -u $GITHUB_USERNAME --password-stdin
 
 cd /usr/local/opt/apps/docker/install
+
 sudo chmod +x install.sh
+
+newgrp docker << EOT
+echo $CR_PAT | docker login ghcr.io -u $GITHUB_USERNAME --password-stdin
 ./install.sh
+EOT
 
 cd ~/apps/tcs_ui/install
 
