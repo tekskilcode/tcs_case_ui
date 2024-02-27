@@ -179,11 +179,14 @@ sudo apt install -y displaylink-driver
 
 echo "///PRE-REQUISITES INSTALL COMPLETE///"
 
+sleep 2
+
 # Display information about Tailscale and x11vnc
 ./tailscale-vnc-info.sh
 
 # Let the user know that a reboot is required for the WaylandEnable setting we changed to take effect.
 echo "Please reboot for changes to take effect."
 echo ""
+sleep 2
 read -p "Press enter to continue"
 

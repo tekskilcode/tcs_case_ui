@@ -25,4 +25,6 @@ echo "If the Tailscale IP is not displayed above, the Tailscale Auth Key may be 
 
 set -e
 
+sleep 2
+
 printf "\n"
