@@ -179,4 +179,5 @@ echo "///PRE-REQUISITES INSTALL COMPLETE///"
 ./tailscale-vnc-info.sh
 
 # Let the user know that a reboot is required for the WaylandEnable setting we changed to take effect.
-echo "Please reboot so that GDM uses Xorg."
+echo "Please reboot for changes to take effect."
+
