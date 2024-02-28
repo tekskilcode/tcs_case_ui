@@ -17,11 +17,11 @@ printf "VNC address for the login screen: %s:5910\n" $(tailscale ip --4)
 
 printf "\n"
 
-echo "When you initially SSH to this machine, you will get a prompt from Tailscale to login. This must be done before attempting to use mosh."
+printf "When you initially SSH to this machine, you will get a prompt from Tailscale to login. This must be done before attempting to use mosh.\n"
 
-echo "Be sure to find this machine in the Tailscale control panel, click '...', and 'Disable Key Expiry'"
+printf "Be sure to find this machine in the Tailscale control panel, click '...', and 'Disable Key Expiry'\n"
 
-echo "If the Tailscale IP is not displayed above, the Tailscale Auth Key may be invalid or expired."
+printf "If the Tailscale IP is not displayed above, the Tailscale Auth Key may be invalid or expired.\n"
 
 set -e
 

@@ -179,8 +179,6 @@ sudo apt install -y displaylink-driver
 
 echo "///PRE-REQUISITES INSTALL COMPLETE///"
 
-sleep 2
-
 # Display information about Tailscale and x11vnc
 ./tailscale-vnc-info.sh
 
