@@ -68,7 +68,7 @@
 		
 			<div class="row justify-content-center glow-bg">
 				<div class="col d-flex align-items-center">
-					<img class="mx-auto mt-2" width="198"src="{% static 'img/LOGO_SPINNER.gif'%} ">
+					<img class="mx-auto mt-2" width="242"src="{% static 'img/LOGO_SPINNER.gif'%} ">
 				</div>
 			</div>
 			<div class="row">
@@ -136,21 +136,28 @@
 					</div>
 				</div>
 			</div>
-			<div class="row mt-3">
+			<div class="row mt-2">
+				<div class="col-md-10 offset-md-1">
+					<div type="text" class="text-center info-box" data-bs-toggle="modal" data-bs-target="#about_modal">
+						About
+					</div>
+				</div>
+			</div>
+			<div class="row mt-2">
 				<div class="col-md-10 offset-md-1">
 					<div type="text" class="text-center info-box" id="goConnect" @click="goToConnect">
 						Find Devices	
 					</div>
 				</div>
 			</div>
-			<div class="row mt-3">
+			<div class="row mt-2">
 				<div class="col-md-10 offset-md-1">
 					<div type="text" class="text-center info-box" data-bs-toggle="modal" data-bs-target="#reboot_modal">
 						Reboot
 					</div>
 				</div>
 			</div>
-			<div class="row mt-3">
+			<div class="row mt-2">
 				<div class="col-md-10 offset-md-1">
 					<div type="text" class="text-center info-box" data-bs-toggle="modal" data-bs-target="#shutdown_modal">
 						Shutdown
@@ -162,6 +169,29 @@
 
 		</div>
 	</div>
+
+	 <!-- About Modal -->
+	 <div class="modal fade" id="about_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalLabel">System Info</h5>
+			</div>
+			
+			<div class="modal-body">
+				<ul>
+                    {% for version in versions %}
+                        <li>{{ version }}</li>
+                    {% endfor %}
+                </ul>
+			</div>
+			
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-large btn-danger" data-bs-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
 
 	  <!-- Shutdown Modal -->
 	  <div class="modal fade" id="shutdown_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

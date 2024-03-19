@@ -9,8 +9,10 @@ services:
   network_mode: "host"
   privileged: true
   volumes:
-   - ./tcs_ui/case_ui:/app #used for development only to keep python code live
+   - ./tcs_ui/case_ui:/app #keep python code live to updates
    - /home/tch/apps/tcs_ui/tcs_ui_pipe:/app/compipe
+   - /home/tch/apps/tcs_ui/version:/app/tcs_version
+   - /home/tch/apps/docker/tkskl-server/.env:/app/tkskl-server/version.txt
   restart: on-failure
   
  tekskil_discovery_broadcast:

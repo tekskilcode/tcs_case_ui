@@ -4,6 +4,7 @@ import requests
 import json
 import ping3
 import psutil
+import os
 
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -24,8 +25,8 @@ def home(request):
 		data["hasNetwork"] = False
 	
 	data["hasInternet"] = is_connected()
-	# data["DHCP"] = is_dhcp_enabled('enp3s0')
-	#str(ip)}
+	data["versions"] = get_sys_info()
+
 	return render(request, 'pages/home.html', data)
 
 def sleep(request):
@@ -61,6 +62,22 @@ def check(request):
 		return JsonResponse({'message': round(pingTime,2)})
 	else:
 		return JsonResponse({'message': 'Invalid request method'})
+	
+def get_sys_info():
+    INSTALL_PATH = '/app/tcs_version'
+    WEB_UI_PATH = '/app/tkskl-server'
+    versions = []
+
+    if os.path.exists(INSTALL_PATH + '/' + 'version.txt'):
+        with open(INSTALL_PATH + '/' + 'version.txt', "r") as f:
+            versions.append(f.readline().strip())
+
+    if os.path.exists(WEB_UI_PATH + '/' + 'version.txt'):
+        with open(WEB_UI_PATH + '/' + 'version.txt', "r") as f:
+            for line in f:
+                versions.append(line.strip())
+
+    return versions
 
 
 def is_connected():

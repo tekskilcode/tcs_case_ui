@@ -1,4 +1,5 @@
 /*819x480*/
+/* 1024*600 */
 
 body{
 	background-color: black;
@@ -68,6 +69,15 @@ a{
   z-index: 1000;
 }
 
+.modal-body ul{
+  list-style-type: none;
+}
+
+.modal-title{
+  margin: 0 auto;
+}
+
+
 .info-tag{
   font-weight:400;
 }
@@ -76,7 +86,7 @@ a{
   background-color: black;
   color: rgb(141, 140, 140);
   border: 2px solid rgb(141, 140, 140);
-  padding: 10px;
+  padding: 7px;
   font-size: 2.5em;
   font-weight: 100;
   border-radius: 33px;
