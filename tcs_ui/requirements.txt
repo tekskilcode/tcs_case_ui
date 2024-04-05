@@ -2,5 +2,5 @@ Django==3.2.10
 netifaces
 django-qr-code
 requests
-ping3
+ping3==4.0.2
 psutil
