@@ -2,7 +2,7 @@ import io
 import netifaces as ni
 import requests
 import json
-import ping3
+#import ping3
 import psutil
 import subprocess
 import os
