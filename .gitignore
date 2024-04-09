@@ -1,1 +1,4 @@
 tcs_ui_pipe/*
+
+**/.env 
+**/*.tar.gz 
