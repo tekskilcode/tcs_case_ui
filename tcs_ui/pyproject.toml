@@ -1,0 +1,18 @@
+[project]
+name = "tcs-ui"
+version = "1.2.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "django==3.2.10",
+    "django-qr-code==3.1.1",
+    "netifaces==0.11.0",
+    "ping3==4.0.2",
+    "psutil==5.9.8",
+    "requests==2.31.0",
+]
+
+[project.scripts]
+runserver = "django:runserver"
+migrate = "django:migrate"
