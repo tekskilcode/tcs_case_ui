@@ -2,3 +2,6 @@ tcs_ui_pipe/*
 
 **/.env 
 **/*.tar.gz 
+**/__pycache__/
+**/*.pyc
+**/.venv
